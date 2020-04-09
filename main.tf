@@ -17,7 +17,7 @@ variable "project" {
 
 data "aws_vpc" "vpc" {
   tags = {
-    Name = "${var.filename}-dev"
+    Name = "${var.filename}"
   }
 }
 
@@ -42,7 +42,7 @@ resource "random_shuffle" "random_subnet" {
 
 
 resource "aws_elb" "web" {
-  name = "${var.filename}-dev"
+  name = "${var.filename}"
 
   subnets         = data.aws_subnet_ids.all.ids
   security_groups = ["${aws_security_group.allow-ssh.id}"]
@@ -96,6 +96,6 @@ resource "aws_instance" "web" {
   }
 
   tags = {
-    Name = "${var.filename}-dev"
+    Name = "${var.filename}"
   }
 }

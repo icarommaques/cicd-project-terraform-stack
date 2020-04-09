@@ -1,5 +1,5 @@
 resource "aws_iam_role" "ecr_readOnly_role" {
-  name = "${var.filename}-dev"
+  name = "${var.filename}"
 
   assume_role_policy = <<EOF
 {
@@ -18,17 +18,17 @@ resource "aws_iam_role" "ecr_readOnly_role" {
 EOF
 
   tags = {
-      Name = "${var.filename}-dev"
+      Name = "${var.filename}"
   }
 }
 
 resource "aws_iam_instance_profile" "ecr_readOnly_profile" {
-  name = "${var.filename}-dev"
+  name = "${var.filename}"
   role = "${aws_iam_role.ecr_readOnly_role.name}"
 }
 
 resource "aws_iam_role_policy" "ecr_readOnly_policy" {
-  name = "${var.filename}-dev"
+  name = "${var.filename}"
   role = "${aws_iam_role.ecr_readOnly_role.id}"
 
   policy = <<EOF
