@@ -23,6 +23,6 @@ resource "aws_security_group" "allow-ssh" {
   }
 
   tags = {
-    Name = "${var.filename}"
+    Name = "${terraform.workspace}"
   }
 }
