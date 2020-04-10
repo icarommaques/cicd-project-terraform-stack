@@ -17,7 +17,7 @@ variable "project" {
 
 data "aws_vpc" "vpc" {
   tags = {
-    Name = "${terraform.workspace}"
+    Name = "${var.project}"
   }
 }
 
