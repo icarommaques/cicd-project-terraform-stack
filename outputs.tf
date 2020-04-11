@@ -1,3 +1,13 @@
+#filename referencias
+output "filename" {
+  value = "${module.localfile.filename}"
+}
+
+output "content" {
+  value = "${module.localfile.content}"
+}
+
+#ambiente
 output "address" {
  value = {
     for instance in aws_instance.web:

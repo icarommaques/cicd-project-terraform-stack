@@ -1,3 +1,9 @@
+#filename (details)
+module "localfile" {
+  source = "./modules/file"
+  filename = "FIAP-TRAB"
+}
+
 # Specify the provider and access details
 provider "aws" {
   region = "${var.aws_region}"
@@ -42,7 +48,7 @@ resource "random_shuffle" "random_subnet" {
 
 
 resource "aws_elb" "web" {
-  name = "hackton-elb"
+  name = "${var.filename}"
 
   subnets         = data.aws_subnet_ids.all.ids
   security_groups = ["${aws_security_group.allow-ssh.id}"]
@@ -96,6 +102,6 @@ resource "aws_instance" "web" {
   }
 
   tags = {
-    Name = "${terraform.workspace}"
+    Name = "${var.filename}"
   }
 }

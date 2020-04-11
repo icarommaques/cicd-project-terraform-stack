@@ -1,3 +1,9 @@
+#filename
+variable "filename" {
+  description = "The name of the file, without the file extension, e.g. foo"
+  // required = true
+}
+
 variable "aws_region" {
   description = "The AWS region to create things in."
   default     = "us-east-1"
@@ -16,7 +22,7 @@ variable "KEY_NAME" {
   default = "fiap-lab"
 }
 variable "PATH_TO_KEY" {
-  default = "/app/.ssh/fiap-lab.pem"
+  default = "~/.ssh/fiap-lab.pem"
 }
 variable "INSTANCE_USERNAME" {
   default = "ubuntu"
